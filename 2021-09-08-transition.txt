@@ -1,0 +1,76 @@
+Date: 08 September 2021
+
+Over the last decade I have been trying to grasp over what OpenPGP and GnuPG
+actually are. I was not sure about how’s and why’s of the technology, which is
+why I have accumulated a lot of various OpenPGP keys. Some of them are too
+small, some are long expired, some have weak passwords, and some are completely
+inaccessible.
+
+In order not to confuse other people and to finally establish my online
+identity, I have set up a new OpenPGP key. From now on, this will be my primary
+key, and I will be transitioning my old ones.
+
+All the old keys mentioned here will be set to expire on 01 January 2022.
+I strongly request anyone wanting to contact me to use my new key. I would also
+like my new key to be re-integrated into the web of trust.
+
+To certify the transition, this message is signed using (almost; see note) every
+one of my old keys as well as the new key.
+
+
+The old keys, sorted by their age (oldest first):
+
+    pub   rsa4096/0x5B7BB75B9D6A32FE 2019-02-15
+          Key fingerprint = 9BC6 68B5 0C4F 0168 F5DB  2D7F 5B7B B75B 9D6A 32FE
+
+    pub   rsa4096/0x82869D5D93513BF3 2019-06-02
+          Key fingerprint = BCE9 83A5 624C 7BD6 7591  21FE 8286 9D5D 9351 3BF3
+
+    pub   rsa4096/0xD95250FB583B9F75 2019-08-10
+          Key fingerprint = 2935 4AD3 C92B C970 3064  4E54 D952 50FB 583B 9F75
+
+    pub   rsa4096/0x047EAE0E4512E127 2019-12-11
+          Key fingerprint = 1A89 AF72 B3B8 C06F 967E  9AAB 047E AE0E 4512 E127
+              Note: This key was revoked before transition and couldn’t be used
+                    for signing
+
+    pub   rsa4096/0xE40DFE6E993540FF 2019-12-12
+          Key fingerprint = 3CC5 EA53 F4DF EFCA 568C  41A0 E40D FE6E 9935 40FF
+
+    pub   rsa2048/0xEA4E7DECEEA050E4 2021-01-01
+          Key fingerprint = 6A4E 43C0 8F65 D6DA 8945  BFA2 EA4E 7DEC EEA0 50E4
+
+The new key:
+
+    pub   rsa4096/0xF0A49E6D84E6EEBE 2021-07-11
+          Key fingerprint = D836 4910 9830 AF99 BD41  C9D2 F0A4 9E6D 84E6 EEBE
+
+Note that only the certifying subkeys are mentioned.
+
+
+I have also decided for a keyserver to host my keys at. From now on, every
+update of my primary key will be published on keys.openpgp.org. To fetch my new
+primary key, you can simply execute:
+
+    gpg --keyserver keys.openpgp.org --recv-key 0xF0A49E6D84E6EEBE
+
+You can check the signature on this document by running:
+
+    gpg --check-sigs 0xF0A49E6D84E6EEBE
+
+For extra security, you can compare the fingerprint of the new key with the one
+listed above:
+
+    gpg --fingerprint 0xF0A49E6D84E6EEBE
+
+If you are satisfied that you’ve got the right key, and the UIDs match what you
+expect, I’d appreciate it if you would sign my key. You can issue a local-only 
+signature with `--lsign-key` or a public signature with `--sign-key`. If you
+do the latter, I’d like to have the key sent my way via e-mail. For this, use
+the address of the primary UID.
+
+
+Please let me know if you have any questions, or problems. I apologize for the
+inconvenience.
+
+Nikita Karamov <nick@karamoff.dev>

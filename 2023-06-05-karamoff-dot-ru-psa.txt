@@ -1,0 +1,17 @@
+5th June 2023
+
+As of today, I am not in control of karamoff(dot)ru any more.
+
+Back in 2019, I have announced moving my primary domain address of the time,
+karamoff(dot)ru to karamoff.dev. I have also announced that the .RU domain
+would remain in an "LTS" state until 2023 [1]. Since then, I have moved all my
+websites and services to karamoff.dev and later to kytta.dev.
+
+Over the last year or more, karamoff(dot)ru was not used at all. 9th May 2023
+was the registration end of the domain, and I did not renew it.
+
+Any links targeted to that domain are not associated with me any longer.
+
+-- Nikita Karamov
+
+[1]: https://twitter.com/kyttawashere/status/1205070746386673664

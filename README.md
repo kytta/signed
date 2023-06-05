@@ -22,4 +22,12 @@ The documents are each licensed under
 [Creative Commons Attribution No Derivatives 4.0 International][CC-BY-ND-4.0],
 unless otherwise stated.
 
+---
+
+This repository is available from following locations:
+
+- <https://github.com/kytta/signed.git>
+- <https://codeberg.org/kytta/signed.git>
+- <https://gitlab.com/kytta/signed.git>
+
 [CC-BY-ND-4.0]: https://spdx.org/licenses/CC-BY-ND-4.0.html

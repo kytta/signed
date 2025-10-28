@@ -1,0 +1,104 @@
+Title:  The 2022 OpenPGP key transition
+Author: Nikita Karamov
+Date:   29 Nov 2022
+
+
+What follows is a quite long explanation as to what happened to my OpenPGP keys.
+
+
+TL;DR: Do not use these RSA keys any more:
+         - 0xF0A49E6D84E6EEBE
+         - 0x3C8E688C96EEB9C9
+         - 0xB3F5AD70F57CA4F7
+         - 0x53F9AEE567559D7D
+
+       Instead, use these Ed25519 keys:
+         - 0xD397E9BE9E6898FA
+         - 0x41D6F71EE78E77CD
+         - 0x00786CB1291515C4
+         - 0x11A76086EB521F14
+
+
+On 26 Nov 2022, I have decided to set up a new OpenPGP key. I wanted to stop
+using RSA keys in favour of the ECC (elliptic-curve cryptography) keys. As such,
+I have created a new certifying key and three subkeys. Then, I have signed this
+new key with my old one. Fingerprints of both keys are in the Appendix A.
+
+The next step would be to transfer my new keys onto my security token. This
+would overwrite my old subkeys. I was sure I've had a backup of the old subkeys,
+so I transferred the new keys onto the token.
+
+As it turns out, my backup was bad this whole time, as I apparently had done it
+after I'd moved the keys to the token. As a result, my backup contained just
+the key stubs. So, I don't have the old subkeys any more, only the master key.
+I have created two new subkeys for the time being.
+
+I have lost access to my old subkeys and thus to some files and many emails.
+While I try to recover some of the stuff, please, DO NOT USE MY OLD KEY for
+anything; it is not safe to use any more. It will continue to be valid until
+01 Jan 2022; I have updated its expiry dates accordingly.
+
+To certify the transition, I have signed this using the new key and the new
+subkey of the old key. Verification instructions are in the Appendix B.
+
+Please let me know if you have any questions, or problems. I apologize for the
+inconvenience.
+
+Nikita Karamov <me@kytta.dev>
+
+
+
+APPENDIX A: Key fingerprints
+
+    The old key:
+
+    pub   rsa4096/0xF0A49E6D84E6EEBE 2021-07-11 [C] [expires: 2023-01-01]
+          Key fingerprint = D836 4910 9830 AF99 BD41  C9D2 F0A4 9E6D 84E6 EEBE
+    uid                 [........] Nikita Karamov <me@kytta.dev>
+    uid                 [........] Nikita Karamov <nick@karamoff.dev>
+    uid                 [........] Nikita Karamov <n.karamov@tu-braunschweig.de>
+    uid                 [........] Nikita Karamov <n.karamov@tu-bs.de>
+    sub   rsa4096/0x3C8E688C96EEB9C9 2022-01-07 [S] [expires: 2023-01-01]
+    sub   rsa4096/0xB3F5AD70F57CA4F7 2022-01-07 [E] [expires: 2023-01-01]
+    sub   rsa4096/0x53F9AEE567559D7D 2022-01-07 [A] [expires: 2023-01-01]
+    sub   rsa4096/0xB84D903FECA631F3 2022-11-26 [E] [expires: 2023-01-01]
+    sub   rsa4096/0x49F8D4AF3463093F 2022-11-28 [S] [expires: 2023-01-01]
+
+
+    The new key:
+
+    pub   ed25519/0xD397E9BE9E6898FA 2022-11-26 [C]
+          Key fingerprint = AF6C 280C 2A34 D3F3 9BED  9366 D397 E9BE 9E68 98FA
+    uid                 [........] Nikita Karamov <me@kytta.dev>
+    uid                 [........] Nikita Karamov <n.karamov@tu-braunschweig.de>
+    uid                 [........] Nikita Karamov <n.karamov@tu-bs.de>
+    uid                 [........] Nikita Karamov <nikita@secure.mailbox.org>
+    sub   ed25519/0x41D6F71EE78E77CD 2022-11-26 [S] [expires: 2023-11-26]
+    sub   cv25519/0x00786CB1291515C4 2022-11-26 [E] [expires: 2023-11-26]
+    sub   ed25519/0x11A76086EB521F14 2022-11-26 [A] [expires: 2023-11-26]
+
+
+
+APPENDIX B: How to verify the keys and this message
+
+    To fetch my old and new OpenPGP keys, execute:
+
+        gpg --keyserver keys.openpgp.org --recv-key 0xF0A49E6D84E6EEBE
+        gpg --keyserver keys.openpgp.org --recv-key 0xD397E9BE9E6898FA
+
+    Verify that the new key is signed by the old one:
+
+        gpg --check-sigs 0xD397E9BE9E6898FA
+
+    For extra security, you can compare the fingerprint of the new key with
+    the one in the Appendix A:
+
+        gpg --fingerprint 0xD397E9BE9E6898FA
+
+    Verify that this message is signed using the valid keys:
+
+        gpg --verify 2022-11-29-openpgp_key_transition.txt{.sig,}
+
+    Delete my old key:
+
+        gpg --delete-keys 0xF0A49E6D84E6EEBE
